@@ -1,0 +1,15 @@
+/* Target all <input> elements inside <td> elements */
+td input {
+    width: 70%; 
+}
+
+/* Target the element with the id "student-submit" */
+#student-submit {
+    width: 150px; 
+    margin-left: 50%; 
+    transform: translate(-50%); 
+    background-color: blue; 
+    color: white;
+    border: none; 
+    padding: 5px; 
+}

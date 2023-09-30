@@ -1,0 +1,42 @@
+<form action="/students/create" method="POST">
+    <!-- Input field for student name with pre-filled value -->
+    <input value="<%= student.name %>" type="text" name="name" placeholder="Name" required>
+    
+    <!-- Input field for student email with pre-filled value -->
+    <input value="<%= student.email %>" type="email" name="email" placeholder="Email" required>
+    
+    <!-- Input field for student batch with pre-filled value -->
+    <input value="<%= student.batch %>" type="text" name="batch" placeholder="Batch" required>
+    
+    <!-- Input field for student college with pre-filled value -->
+    <input value="<%= student.college %>" type="text" name="college" placeholder="College name" required>
+
+    <!-- Dropdown for student status with conditional selection -->
+    <select name="status" required>
+        <!-- Check if student status is "placed" and set selected attribute accordingly -->
+        <% if (student.status == "placed") { %>
+            <option value="placed" selected>Placed</option>
+        <% } else { %>
+            <option value="placed">Placed</option>
+        <% } %>
+
+        <!-- Check if student status is "not placed" and set selected attribute accordingly -->
+        <% if (student.status == "not placed") { %>
+            <option value="not placed" selected>Not Placed</option>
+        <% } else { %>
+            <option value="not placed">Not Placed</option>
+        <% } %>
+    </select>
+
+    <!-- Input field for DSA score with pre-filled value -->
+    <input value="<%= student.dsa_score %>" type="number" name="dsa_score" placeholder="DSA Score" required>
+    
+    <!-- Input field for Web development score with pre-filled value -->
+    <input value="<%= student.webd_score %>" type="number" name="webd_score" placeholder="WebD Score" required>
+    
+    <!-- Input field for React score with pre-filled value -->
+    <input value="<%= student.react_score %>" type="number" name="react_score" placeholder="React Score" required>
+
+    <!-- Submit button to submit the form -->
+    <input type="submit" value="Submit">
+</form>

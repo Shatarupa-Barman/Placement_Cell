@@ -1,0 +1,260 @@
+<% if (locals.user) { %>
+  <!-- Start of the main content section -->
+  <div class="d-flex m-0  p-2 flex-wrap justify-content-center">
+    <!-- Student list section -->
+    <div class="d-flex flex-column align-items-center p-2 mx-auto my-2 container-sm border rounded" style="
+          max-width: 600px;
+          min-height: 85vh;
+          max-height: 600px;
+          overflow-y: auto;
+        ">
+      <!-- Title for the student list -->
+      <h3 class="mt-2" style="color: green;">Students list</h3>
+
+      <!-- Accordion for displaying student information -->
+      <div class="accordion accordion-flush" style="width: 90%">
+        <% for (student of students) { %>
+          <div class="accordion-item my-2 border border-1 rounded">
+            <h2 class="accordion-header" id="headingOne">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapse<%= student._id %>" aria-expanded="false"
+                aria-controls="collapse<%= student._id %>">
+                <span class="fw-semibold text-capitalize">
+                  <%= student.name %>
+                </span>
+              </button>
+            </h2>
+            <div id="collapse<%= student._id %>" class="accordion-collapse collapse" aria-labelledby="headingOne"
+              data-bs-parent="#accordionExample">
+              <div class="accordion-body d-flex flex-column">
+                <!-- Table to display student details -->
+                <table class="table table-striped border">
+                  <tbody>
+                    <tr>
+                      <td>Name</td>
+                      <td>
+                        <%= student.name %>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Email</td>
+                      <td>
+                        <%= student.email %>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>College</td>
+                      <td>
+                        <%= student.college %>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Batch</td>
+                      <td>
+                        <%= student.batch %>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Status</td>
+                      <td>
+                        <%= student.status %>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>DSA score</td>
+                      <td>
+                        <%= student.dsa_score %>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Web development score</td>
+                      <td>
+                        <%= student.webd_score %>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>React score</td>
+                      <td>
+                        <%= student.react_score %>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <!-- Buttons to edit and delete student -->
+                <div class="d-flex justify-content-around" style="width: 100%">
+                  <a href="/students/?id=<%= student._id %>" class="btn btn-primary" style="width: 40%">
+                    Edit
+                  </a>
+                  <a href="/students/destroy/?id=<%= student._id %>" class="btn btn-danger" style="width: 40%">
+                    Delete
+                  </a>
+                </div>
+
+                <!-- Interviews section -->
+                <div class="mt-3 d-flex border-top flex-column align-items-center" style="width: 100%">
+                  <h3 class="mt-2">Interviews</h3>
+
+                  <!-- Table to display interview details for the student -->
+                  <table style="width: 100%">
+                    <thead>
+                      <tr>
+                        <th scope="col">Company</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Result</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% for (interview of student.interviews) { %>
+                        <tr class="text-capitalize">
+                          <td>
+                            <%= interview.company.company %>
+                          </td>
+                          <td class="date">
+                            <%= interview.company.date %>
+                          </td>
+                          <td>
+                            <%= interview.result %>
+                          </td>
+                        </tr>
+                      <% } %>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% } %>
+      </div>
+    </div>
+
+    <!-- Scheduled Interviews section -->
+    <div class="d-flex flex-column align-items-center p-2 mx-auto my-2 container-sm border rounded" style="
+          max-width: 600px;
+          min-height: 200px;
+          max-height: 600px;
+          overflow-y: auto;
+        ">
+      <!-- Title for the Scheduled Interviews section -->
+      <h3 class="mt-2" style="color: green;">Scheduled Interviews</h3>
+
+      <!-- Accordion for displaying scheduled interview information -->
+      <div class="accordion accordion-flush" style="width: 90%">
+        <% for (interview of interviews) { %>
+          <div class="accordion-item my-2 border border-1 rounded">
+            <h2 class="accordion-header" id="headingOne">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapse<%= interview._id %>" aria-expanded="false"
+                aria-controls="collapse<%= interview._id %>">
+                <span class="fw-semibold font-seigeUi text-uppercase">
+                  <%= interview.company %>
+                </span>
+              </button>
+            </h2>
+            <div id="collapse<%= interview._id %>" class="accordion-collapse collapse" aria-labelledby="headingOne"
+              data-bs-parent="#accordionExample">
+              <div class="accordion-body d-flex flex-column align-items-center">
+                <!-- Table to display scheduled interview details -->
+                <table class="table">
+                  <tbody>
+                    <tr>
+                      <th scope="row">Company</th>
+                      <td>
+                        <%= interview.company %>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="col">Date</th>
+                      <td class="date">
+                        <%= interview.date %>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <!-- Display enrolled students for the interview -->
+                <div class="d-flex flex-column align-items-center" style="width: 100%">
+                  <h5>Enrolled students</h5>
+
+                  <!-- Loop through enrolled students for this interview -->
+                  <% for (i of interview.students) { %>
+                    <div class="border border-secondry rounded mb-2" style="width: 100%">                     
+                      <% if (i && i.student) { %>
+                      <!-- Table to display enrolled student details -->
+                      <table class="table">
+                        <tbody>
+                          <tr>
+                            <td>Name</td>
+                            <td>
+                              <%= i.student.name %>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Email</td>
+                            <td>
+                              <%= i.student.email %>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>Result</td>
+                            <td>
+                              <%= i.result %>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                   
+                     <% } %>
+                      
+                      <!-- Delete student from interview button -->
+                      <% if (i && i.student && i.student.id && interview && interview.id) { %>
+                        <a href="/interviews/remove-student/<%= i.student.id %>/<%= interview.id %>" class="btn btn-danger ms-2 mb-2" style="width: 40%">Delete</a>
+                      <% } %>
+                    </div>
+                  <% } %>
+                </div>
+
+                <!-- Form to add a new student to the interview -->
+                <div class="d-flex flex-column align-items-center border rounded p-2 m-2 shadow-sm" style="width: 100%">
+                  <h5 class="mt-2">Add student</h5>
+                  <form class="container-fluid" action="/interviews/add-student/<%= interview.id %>" method="POST">
+                    <div class="mb-3">
+                      <label for="student_email" class="form-label">Student email</label>
+                      <input type="email" class="form-control" id="student_email" aria-describedby="emailHelp"
+                        name="email" required />
+                    </div>
+                    <div class="mb-3">
+                      <label for="result" class="form-label">Result</label>
+                      <select id="result" class="form-select" name="result" required>
+                        <option selected>PASS</option>
+                        <option>FAIL</option>
+                        <option>On Hold</option>
+                        <option>Didn't attempt</option>
+                      </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                      &nbsp; Add &nbsp;
+                    </button>
+                  </form>
+                </div>
+
+                <!-- Button to delete the interview -->
+                <button class="btn btn-danger ms-2 mb-2 mt-4 p-2">
+                  <a href="/interviews/destroy/?id=<%= interview._id %>">Delete interview</a>
+                </button>
+
+              </div>
+            </div>
+          </div>
+        <% } %>
+      </div>
+    </div>
+  </div>
+<% } %>
+
+<!-- JavaScript code to style the first list item -->
+<script>
+  li[0].style.borderBottom = "2px solid yellow";
+</script>
+
+<!-- Include an external JavaScript file -->
+<script src="/js/home.js"></script>

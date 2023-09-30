@@ -1,0 +1,17 @@
+/*Apply a reset to remove default margins, padding, and border-box sizing on all elements */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+ }
+
+/* Set the font family for the entire body of the HTML document to sans-serif */
+body {
+    font-family: sans-serif;
+   }
+
+/* Style anchor (link) elements */
+a {
+    text-decoration: none; 
+    color: inherit; 
+}

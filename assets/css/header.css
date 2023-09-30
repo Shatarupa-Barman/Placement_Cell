@@ -1,0 +1,44 @@
+/*Style for list items */
+li {
+    list-style: none; 
+    font-size: 1.1rem; 
+    padding: 10px 10px; 
+    color: yellow; 
+}
+
+/*Style for links and link hover state */
+a, a:hover {
+    text-decoration: none;
+    color: inherit; 
+}
+
+/*Style for the header element */
+header {
+    width: 100%; 
+    padding: 7px 40px 0px 40px;
+    background-color: black; 
+    color: white; 
+    display: flex; 
+    justify-content: space-between; 
+}
+
+/*Style for the ul element within the header */
+header ul {
+    width: 70%; 
+    display: flex; 
+    flex-direction: row; 
+    align-items: center; 
+    justify-content: space-evenly;
+}
+
+/*Style for li elements within the ul when hovered */
+header ul li:hover {
+    background-color: #333; 
+    transition: 0.3s; 
+    border-radius: 10px; 
+}
+
+/*Style for an element with the id "logo" */
+#logo {
+    color: red; 
+}

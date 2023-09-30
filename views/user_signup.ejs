@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Set the character encoding and viewport settings -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Set the title of the webpage dynamically using EJS -->
+    <title><%= title %></title>
+    <!-- Link to an external CSS file for styling -->
+    <link rel="stylesheet" href="/css/sign_up.css">
+</head>
+<body>
+    <!-- Create a container for the registration form -->
+    <div class="container">
+        <!-- Create a form element for user registration -->
+        <form action="/users/create" method="POST">
+            <!-- Display a heading for the registration form -->
+            <h1>Sign Up</h1>
+            <!-- Create an input field for the user's name with a label -->
+            <div>
+                <label for="name"> Name </label>
+                <input type="text" name="name" id="name" required>
+            </div>
+            <!-- Create an input field for the user's email with a label -->
+            <div>
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" required>
+            </div>
+            <!-- Create an input field for the user's password with a label -->
+            <div>
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" required>
+            </div>
+            <!-- Create an input field for confirming the password with a label -->
+            <div>
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" name="confirm_password" id="confirm-password" required>
+            </div>
+            <!-- Create a button for submitting the registration form -->
+            <div>
+                <button type="submit">Sign Up</button>
+            </div>
+            <!-- Provide a link to the sign-in page if the user is already registered -->
+            <p id="signup-page-link"> Already a user? <a href="/users/sign-in"> Sign in</a></p>
+        </form>
+    </div>
+</body>
+</html>

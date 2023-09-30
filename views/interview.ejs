@@ -1,0 +1,38 @@
+<!-- Include an external CSS stylesheet -->
+<link rel="stylesheet" href="/css/interview.css">
+
+<!-- Start of the main container -->
+<div id="container">
+    <!-- Form for creating a new interview -->
+    <form action="/interviews/create" method="POST">
+        <!-- Table to structure the form fields -->
+        <table class="table table-striped border">
+            <tbody>
+                <!-- Row for entering the name of the company -->
+                <tr>
+                    <td>Name of Company</td>
+                    <td>
+                        <!-- Input field for company name, with 'required' attribute -->
+                        <input type="text" name="company" required>
+                    </td>
+                </tr>
+                <!-- Row for entering the date of the interview -->
+                <tr>
+                    <td>Date</td>
+                    <td>
+                        <!-- Input field for date, using 'type="date"' and 'required' attribute -->
+                        <input type="date" name="date" required>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <!-- Submit button for the form -->
+        <input id="submit" type="submit" value="Submit">
+    </form>
+</div>
+
+<!-- JavaScript code to style the third list item -->
+<script>
+    li[2].style.borderBottom = "2px solid yellow";
+</script>

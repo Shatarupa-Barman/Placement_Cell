@@ -1,0 +1,166 @@
+<!-- Include an external CSS stylesheet for styling -->
+<link rel="stylesheet" href="/css/student.css">
+
+<!-- Check if a student object exists -->
+<% if (student) { %>
+    <!-- If a student exists, display a form for updating student details -->
+    <form action="/students/create" method="POST" style="
+        width: 70%;
+        margin: auto;" class="p-5">
+        <table class="table table-striped border">
+            <tbody>
+            <!-- Input field for student name with pre-filled value -->
+            <tr>
+                <td>Name</td>
+                <td>
+                    <input type="text" name="name" value="<%= student.name %>" required>
+                </td>
+            </tr>
+            <!-- Input field for student email with pre-filled value -->
+            <tr>
+                <td>Email</td>
+                <td>
+                    <input type="email" name="email" value="<%= student.email %>" required>
+                </td>
+            </tr>
+            <!-- Input field for student college with pre-filled value -->
+            <tr>
+                <td>College</td>
+                <td>
+                    <input type="text" name="college" value="<%= student.college %>" required>
+                </td>
+            </tr>
+            <!-- Input field for student batch with pre-filled value -->
+            <tr>
+                <td>Batch</td>
+                <td>
+                    <input type="text" name="batch" value="<%= student.batch %>" required>
+                </td>
+            </tr>
+            <!-- Dropdown for student status with conditional selection -->
+            <tr>
+                <td>Status</td>
+                <td>
+                    <select name="status" required>
+                        <!-- Check if student status is "placed" and set selected attribute accordingly -->
+                        <% if(student.status == "placed"){ %>
+                            <option value="placed" selected>Placed</option>
+                        <% }else {%>
+                            <option value="placed">Placed</option>
+                        <% } %>
+
+                        <!-- Check if student status is "not placed" and set selected attribute accordingly -->
+                        <% if(student.status == "not placed"){ %>
+                            <option value="not placed" selected>Not Placed</option>
+                        <% }else {%>
+                            <option value="not placed">Not Placed</option>
+                        <% } %>  
+                    </select>
+                </td>
+            </tr>
+            <!-- Input field for DSA score with pre-filled value -->
+            <tr>
+                <td>DSA score</td>
+                <td>
+                    <input type="number" name="dsa_score" value="<%= student.dsa_score %>" required>
+                </td>
+            </tr>
+            <!-- Input field for Web development score with pre-filled value -->
+            <tr>
+                <td>Web development score</td>
+                <td>
+                    <input type="number" name="webd_score" value="<%= student.webd_score %>" required>
+                </td>
+            </tr>
+            <!-- Input field for React score with pre-filled value -->
+            <tr>
+                <td>React score</td>
+                <td>
+                    <input type="number" name="react_score" value="<%= student.react_score %>" required>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    
+        <!-- Submit button for updating student details -->
+        <input id="student-submit" style="background-color: #ff6d00" type="submit" value="Update">
+    </form>
+
+<% } else { %> 
+    <!-- If no student exists, display a form for creating a new student -->
+    <form action="/students/create" method="POST" style="
+        width: 70%;
+        margin: auto;" class="p-5">
+        <table class="table table-striped border">
+            <tbody>
+            <!-- Input field for student name -->
+            <tr>
+                <td>Name</td>
+                <td>
+                    <input type="text" name="name" required>
+                </td>
+            </tr>
+            <!-- Input field for student email -->
+            <tr>
+                <td>Email</td>
+                <td>
+                    <input type="email" name="email" required>
+                </td>
+            </tr>
+            <!-- Input field for student college -->
+            <tr>
+                <td>College</td>
+                <td>
+                    <input type="text" name="college" required>
+                </td>
+            </tr>
+            <!-- Input field for student batch -->
+            <tr>
+                <td>Batch</td>
+                <td>
+                    <input type="text" name="batch" required>
+                </td>
+            </tr>
+            <!-- Dropdown for student status -->
+            <tr>
+                <td>Status</td>
+                <td>
+                    <select name="status" required>
+                        <option value="placed">Placed</option>
+                        <option value="not placed">Not Placed</option>
+                    </select>
+                </td>
+            </tr>
+            <!-- Input field for DSA score -->
+            <tr>
+                <td>DSA score</td>
+                <td>
+                    <input type="number" name="dsa_score" required>
+                </td>
+            </tr>
+            <!-- Input field for Web development score -->
+            <tr>
+                <td>Web development score</td>
+                <td>
+                    <input type="number" name="webd_score" required>
+                </td>
+            </tr>
+            <!-- Input field for React score -->
+            <tr>
+                <td>React score</td>
+                <td>
+                    <input type="number" name="react_score" required>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    
+        <!-- Submit button for creating a new student -->
+        <input id="student-submit" type="submit" value="Create">
+    </form>
+<% } %>   
+
+<!-- JavaScript code to highlight the appropriate navigation item -->
+<script>
+    li[1].style.borderBottom = "2px solid yellow";
+</script>

@@ -1,0 +1,94 @@
+/* Set the background color of the entire body to black and specify the font size */
+body {
+    background-color: black;
+    font-size: 1.2rem;
+}
+
+/* Style anchor (link) elements */
+a, a:hover {
+    text-decoration: none; 
+    color: inherit; 
+}
+
+/* Style the container class */
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Style the form header (h1) inside the container */
+form > h1 {
+    margin-bottom: 20px;
+}
+
+/* Style the form inside the container */
+.container form {
+    width: fit-content;
+    min-height: 500px;
+    height: fit-content;
+    padding: 20px 100px;
+    background-color: rgba(255, 255, 255, 0.959);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    text-align: left;
+}
+
+/* Style labels inside form div elements */
+form div label {
+    display: inline-block;
+    width: fit-content;
+}
+
+/* Style input fields inside form div elements */
+form div input {
+    border: none;
+    border-bottom: 1px solid black;
+    background-color: transparent;
+    width: 300px;
+    font-size: 1rem;
+}
+
+/*Remove the focus outline from input elements */
+input:focus {
+    outline: none;
+}
+
+/* Style buttons inside form div elements */
+form div button {
+    width: 300px;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 1.1rem;
+}
+
+/* Style form div elements as columns with a gap between them */
+form div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Style the signup page link and its anchor */
+#signup-page-link {
+    font-size: 1rem;
+}
+
+#signup-page-link a {
+    text-decoration: none; 
+    color: blue; 
+    border-bottom: 1px solid blue; 
+    cursor: pointer; 
+}
+
